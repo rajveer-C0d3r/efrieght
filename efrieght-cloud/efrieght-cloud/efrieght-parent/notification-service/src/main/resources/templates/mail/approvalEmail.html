@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}" lang="en">
+    <head>
+        <title th:text="#{email.approval.title}">JHipster Approval</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="shortcut icon" th:href="@{|${baseUrl}/favicon.ico|}" />
+    </head>
+    <body>
+        <p th:text="#{email.activation.greeting(${user.name})}">
+            Dear
+        </p>
+        <p th:text="#{email.approval.text1(${user.moduleName})}">
+            You have Module Name to approval.
+        </p>
+         <p th:text="#{email.approval.text2}">
+            kindly give your acknowledgement for the same, please click on the URL below to view:
+        </p>
+        <p>
+            <a th:with="url=(@{|${baseUrl}|})" th:href="${url}"
+            th:text="${url}">Approval link</a>
+        </p>
+        <p>
+            <span th:text="#{email.activation.text2}">Regards, </span>
+            <br/>
+            <em th:text="#{email.signature}">JHipster.</em>
+        </p>
+    </body>
+</html>

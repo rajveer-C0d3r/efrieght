@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: discovery-service
+#  cloud:
+#    config:
+#      uri: http://localhost:8088
+server:
+  port: 8061
+eureka:
+  server:
+    wait-time-in-ms-when-sync-empty: 0
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+logging:
+  level:
+    root: info
+    '[org.springframework.cloud.netflix]': info
+    '[org.springframework]': info
+    '[com.grt.elogfrieght.services.discovery]': info
+  pattern: 
+#    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+     console: '%d{yyyy-MMM-dd HH:mm:ss.SSS} [%thread]  %highlight(%-5level) [%12.12thread] %cyan(%-40.40logger{40}) : %msg %n'

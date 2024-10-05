@@ -1,0 +1,14 @@
+server:
+  port: 8088
+spring:
+  profiles:
+    active: native
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - loggers
+      cors:
+        allowed-origins:
+        - '*'

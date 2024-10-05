@@ -1,0 +1,77 @@
+{"properties": [
+  {
+    "name": "spring.jpa.hibernate.naming.strategy",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.jpa.hibernate.naming.strategy'"
+  },
+  {
+    "name": "kafka.bootstrap.servers",
+    "type": "java.lang.String",
+    "description": "A description for 'kafka.bootstrap.servers'"
+  },
+  {
+    "name": "kafka.consumer.group_id",
+    "type": "java.lang.String",
+    "description": "A description for 'kafka.consumer.group_id'"
+  },
+  {
+    "name": "kafka.consumer.key.deserializer",
+    "type": "java.lang.String",
+    "description": "A description for 'kafka.consumer.key.deserializer'"
+  },
+  {
+    "name": "kafka.consumer.enable.auto_commit",
+    "type": "java.lang.String",
+    "description": "A description for 'kafka.consumer.enable.auto_commit'"
+  },
+  {
+    "name": "kafka.consumer.offset.reset_config",
+    "type": "java.lang.String",
+    "description": "A description for 'kafka.consumer.offset.reset_config'"
+  },
+  {
+    "name": "kafka.consumer.value.deserializer",
+    "type": "java.lang.String",
+    "description": "A description for 'kafka.consumer.value.deserializer'"
+  },
+  {
+    "name": "kafka.consumer.auto.commit.interval_ms",
+    "type": "java.lang.String",
+    "description": "A description for 'kafka.consumer.auto.commit.interval_ms'"
+  },
+  {
+    "name": "file.upload-dir",
+    "type": "java.lang.String",
+    "description": "A description for 'file.upload-dir'"
+  },
+  {
+    "name": "api-base-url",
+    "type": "java.lang.String",
+    "description": "A description for 'api-base-url'"
+  },
+  {
+    "name": "object-code.default-block-size",
+    "type": "java.lang.String",
+    "description": "A description for 'object-code.default-block-size'"
+  },
+  {
+    "name": "jwt.accesstoken.public-key",
+    "type": "java.lang.String",
+    "description": "A description for 'jwt.accesstoken.public-key'"
+  },
+  {
+    "name": "jwt.accesstoken.expiryTime",
+    "type": "java.lang.String",
+    "description": "A description for 'jwt.accesstoken.expiryTime'"
+  },
+  {
+    "name": "jwt.refreshtoken.public-key",
+    "type": "java.lang.String",
+    "description": "A description for 'jwt.refreshtoken.public-key'"
+  },
+  {
+    "name": "jwt.refreshtoken.expiryTime",
+    "type": "java.lang.String",
+    "description": "A description for 'jwt.refreshtoken.expiryTime'"
+  }
+]}

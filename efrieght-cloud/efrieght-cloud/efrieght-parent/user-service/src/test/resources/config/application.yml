@@ -1,0 +1,78 @@
+eureka:
+  client:
+    enabled: false 
+  instance:
+    appname: client-service
+    prefer-ip-address: true
+    hostname: localhost:8062
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: user-service
+  datasource :
+    url : jdbc:mysql://localhost:3306/eFrieghtCloud?autoReconnect=true
+    username : root
+    password : root
+    tomcat :
+      test-while-idle : true
+    driver-class-name : com.mysql.cj.jdbc.Driver
+    tomcat.max-active : 20
+  jpa :
+    show-sql : true
+    hibernate :
+      ddl-auto : update
+      naming :
+        strategy : org.hibernate.cfg.ImprovedNamingStrategy
+    properties :
+      hibernate :
+        dialect : org.hibernate.dialect.MySQL5Dialect
+
+server:
+  port: 8062
+  address: localhost
+
+kafka:
+  bootstrap :
+    servers: localhost:9092
+  consumer:
+    group_id: user-service
+    offset :
+      reset_config : latest
+    enable : 
+      auto_commit : true
+    key : 
+      deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    value : 
+      deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    auto : 
+      commit : 
+        interval_ms : 10000 
+        
+  producer:
+    key :
+      serializer: org.apache.kafka.common.serialization.StringSerializer
+    value: 
+      serializer: org.apache.kafka.common.serialization.StringSerializer
+    lingerms: 2
+    retries : 2
+    acks: 1 
+    compression_type: lz4
+    request_timeout_ms: 59000  
+
+jwt:
+  accesstoken:
+    privateKey: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC428eyI4gaZOwlXI9tH9/KbpfAcG5DE1i5TrMsX6GegZt/jloVLq9oYg+ZnzlI7TxWuiNdalyBr1h09rcQB0WdQQU6Lss8mfIeyWbAm3jRaJWEVTnuO70B5NWU0BajJjD2wAIJCbJ7Ho0LrtO15NabTJAtbP7qB6AHwsM6kIP+Up7ekfwUg9t+10bRwqZZtBtxiF0OWFMHyatSWsmBbY8J9bYtLWHIDce0FQ7X6p6QM21RD8PjCoVDgTWb9iNMoFVY9ANqVnIwcXnmbYcD1U+H+MRYoVgcxcZmANSG8//OZv0xpPWd9Cx9EpS/lM4HByiiHccubcJbBP5qFZNHp5BtAgMBAAECggEAUB/C4K2R8o7H5DHIYO4t29ovoFObFyutizRXaOZScReQRKt41DGWCdJnHJjtBXT+cEDhzz2otvU/jALbufDM9aoXD+70XGIFld6J0PYSWgHQvLkMEPyHoeiDwqqnBTQqiOkUeMJhQAgv7l5qmS6E7m8zFt1laB7B+Fssr5ev/m0mmiqNIBBtbTrMBQVXR314gmvD7MYekapZutNW3WRQtQJ+/qVSK2PT4kHbMS7U3eKM3cpSzZyGzHvkoLDZcv45OqpzYunOtHvZQk8LYnWbGNbwT9bvWtrDy2C7yYlUqB3R7O852qMEXlTsg0c2M/hjaU/KCcUVi+qnjSKteVz56QKBgQD8CodC6zV9hmVZ7eLM1ZX2Hr68mTnAQWU6AGfGVaG+JaxxDtxtoVn8dzUpag2xXKNHCFFOTEuuq0e2AYG8myymeTOnynUaw3bftckXMRai4LTD39bLtyb4lOLoV+/tMCuWD+Zo4BHb5WhQTa1aC1Q53L1ou9C7aroNI/Aavc0lQwKBgQC7wxtLR4A+vMOsLy+a0eLYfIwtukKum0URVG1PeslKq5/y+Js+Jx3tiZISbTbCcPD4OpWJ5yPhDsO8O2Yf5Rg5ucbmeM+JcNAoQbDN5ZbhcVYfvLIdWcuWsnPjZ0KGgG74XYVQuMsXIvtVVPo9NuvzBwdDKa08tt2FeOIEqNVAjwKBgC/z/NoxkCLK0Du09ALO3FJQdS/C42b9yjmn3BazMivQVSfJkQzWtx0+vQGdKO/G1VXtcjK4d2nLMsChNsLgrzUZOEfDUFaAO/zCRHlCILFqmVnvG5n0xdhj02wrVv3EvXY2njrz7tHsqtUkgkfwgdzkb7Eeks8ltjJL1SHxXLerAoGAHPNbbQMMUiAW56Cq7Ws5V/n0P0S97WBBiQeEh0G+ccX+tp8AiNfNNIgGvtKaI+b4ML4PuqCqFpSJN6fM+lP/pT7w3S55iY6ceeiPE2A4IHCyP9h/eikTTBwd5E1So5x//8mjuauUnO+m4yRkJTYnsWQ/CWsOrBLiGydlaiSCJR8CgYEA9A1m82/RzDI5grsQJg/gN1xDZD8AYCJuHEjjKLQjufstRqcGTNrnrf7m0s46WlYaVHbgGBcbUPvdLkl2oqdvC6zD4Df4E7X+JzROl8U3PsP/VHN/YMXSHFmKKsNVNs2Ddoxac/+SH14jYT5lnf+hZ6cg0taPAQHr8LF/VbIMHfk=
+    publicKey : MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuNvHsiOIGmTsJVyPbR/fym6XwHBuQxNYuU6zLF+hnoGbf45aFS6vaGIPmZ85SO08VrojXWpcga9YdPa3EAdFnUEFOi7LPJnyHslmwJt40WiVhFU57ju9AeTVlNAWoyYw9sACCQmyex6NC67TteTWm0yQLWz+6gegB8LDOpCD/lKe3pH8FIPbftdG0cKmWbQbcYhdDlhTB8mrUlrJgW2PCfW2LS1hyA3HtBUO1+qekDNtUQ/D4wqFQ4E1m/YjTKBVWPQDalZyMHF55m2HA9VPh/jEWKFYHMXGZgDUhvP/zmb9MaT1nfQsfRKUv5TOBwcooh3HLm3CWwT+ahWTR6eQbQIDAQAB
+    expiryTime : 2
+    
+  refreshtoken:
+    privateKey: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC428eyI4gaZOwlXI9tH9/KbpfAcG5DE1i5TrMsX6GegZt/jloVLq9oYg+ZnzlI7TxWuiNdalyBr1h09rcQB0WdQQU6Lss8mfIeyWbAm3jRaJWEVTnuO70B5NWU0BajJjD2wAIJCbJ7Ho0LrtO15NabTJAtbP7qB6AHwsM6kIP+Up7ekfwUg9t+10bRwqZZtBtxiF0OWFMHyatSWsmBbY8J9bYtLWHIDce0FQ7X6p6QM21RD8PjCoVDgTWb9iNMoFVY9ANqVnIwcXnmbYcD1U+H+MRYoVgcxcZmANSG8//OZv0xpPWd9Cx9EpS/lM4HByiiHccubcJbBP5qFZNHp5BtAgMBAAECggEAUB/C4K2R8o7H5DHIYO4t29ovoFObFyutizRXaOZScReQRKt41DGWCdJnHJjtBXT+cEDhzz2otvU/jALbufDM9aoXD+70XGIFld6J0PYSWgHQvLkMEPyHoeiDwqqnBTQqiOkUeMJhQAgv7l5qmS6E7m8zFt1laB7B+Fssr5ev/m0mmiqNIBBtbTrMBQVXR314gmvD7MYekapZutNW3WRQtQJ+/qVSK2PT4kHbMS7U3eKM3cpSzZyGzHvkoLDZcv45OqpzYunOtHvZQk8LYnWbGNbwT9bvWtrDy2C7yYlUqB3R7O852qMEXlTsg0c2M/hjaU/KCcUVi+qnjSKteVz56QKBgQD8CodC6zV9hmVZ7eLM1ZX2Hr68mTnAQWU6AGfGVaG+JaxxDtxtoVn8dzUpag2xXKNHCFFOTEuuq0e2AYG8myymeTOnynUaw3bftckXMRai4LTD39bLtyb4lOLoV+/tMCuWD+Zo4BHb5WhQTa1aC1Q53L1ou9C7aroNI/Aavc0lQwKBgQC7wxtLR4A+vMOsLy+a0eLYfIwtukKum0URVG1PeslKq5/y+Js+Jx3tiZISbTbCcPD4OpWJ5yPhDsO8O2Yf5Rg5ucbmeM+JcNAoQbDN5ZbhcVYfvLIdWcuWsnPjZ0KGgG74XYVQuMsXIvtVVPo9NuvzBwdDKa08tt2FeOIEqNVAjwKBgC/z/NoxkCLK0Du09ALO3FJQdS/C42b9yjmn3BazMivQVSfJkQzWtx0+vQGdKO/G1VXtcjK4d2nLMsChNsLgrzUZOEfDUFaAO/zCRHlCILFqmVnvG5n0xdhj02wrVv3EvXY2njrz7tHsqtUkgkfwgdzkb7Eeks8ltjJL1SHxXLerAoGAHPNbbQMMUiAW56Cq7Ws5V/n0P0S97WBBiQeEh0G+ccX+tp8AiNfNNIgGvtKaI+b4ML4PuqCqFpSJN6fM+lP/pT7w3S55iY6ceeiPE2A4IHCyP9h/eikTTBwd5E1So5x//8mjuauUnO+m4yRkJTYnsWQ/CWsOrBLiGydlaiSCJR8CgYEA9A1m82/RzDI5grsQJg/gN1xDZD8AYCJuHEjjKLQjufstRqcGTNrnrf7m0s46WlYaVHbgGBcbUPvdLkl2oqdvC6zD4Df4E7X+JzROl8U3PsP/VHN/YMXSHFmKKsNVNs2Ddoxac/+SH14jYT5lnf+hZ6cg0taPAQHr8LF/VbIMHfk=
+    publicKey : MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuNvHsiOIGmTsJVyPbR/fym6XwHBuQxNYuU6zLF+hnoGbf45aFS6vaGIPmZ85SO08VrojXWpcga9YdPa3EAdFnUEFOi7LPJnyHslmwJt40WiVhFU57ju9AeTVlNAWoyYw9sACCQmyex6NC67TteTWm0yQLWz+6gegB8LDOpCD/lKe3pH8FIPbftdG0cKmWbQbcYhdDlhTB8mrUlrJgW2PCfW2LS1hyA3HtBUO1+qekDNtUQ/D4wqFQ4E1m/YjTKBVWPQDalZyMHF55m2HA9VPh/jEWKFYHMXGZgDUhvP/zmb9MaT1nfQsfRKUv5TOBwcooh3HLm3CWwT+ahWTR6eQbQIDAQAB
+    expiryTime : 6
+  encrption:
+    secret: secret
+    salt: salt
+api-base-url: http://elogclient.brickcube.com

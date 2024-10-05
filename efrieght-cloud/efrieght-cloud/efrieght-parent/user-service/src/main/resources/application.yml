@@ -1,0 +1,75 @@
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 20
+  servlet: 
+     multipart:
+       max-file-size: 15MB
+  profiles:
+    active: dev  
+server:
+  port: 8062
+  shutdown: graceful
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css, application/javascript, application/json
+    min-response-size: 1024
+  servlet:
+    context-path: /user
+            
+# KAFKA-CONFIGURATION
+kafka:
+  bootstrap :
+    servers: localhost:9092
+  consumer:
+    group_id: oauth-service
+    offset :
+      reset_config : latest
+    enable : 
+      auto_commit : true
+    key : 
+      deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    value : 
+      deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    auto : 
+      commit : 
+        interval_ms : 10000
+  producer:
+    key :
+      serializer: org.apache.kafka.common.serialization.StringSerializer
+    value: 
+      serializer: org.apache.kafka.common.serialization.StringSerializer
+    lingerms: 2
+    retries : 2
+    acks: 1
+    compression_type: lz4
+    request_timeout_ms: 59000
+    
+swagger:
+  title: User-Service
+  description: This service provide all user related data
+  version : 1.1.0
+  termsOfServiceUrl: will be provided soon
+  contactName: GRT Global Logistics Pvt Ltd
+  email: info@grtship.com
+  developerName: GRT Global Logistcis Pvt Ltd
+  url : http://www.grtship.com/
+  license: self-signed
+  licenseUrl: Inprogress
+  api:
+    name: JWT
+    keyname: Authorization
+    passAs: header
+  authorizationScope:
+    scope: global
+    description: accessEverything
+    
+    
+springfox:  documentation:    auto-startup: true
+    enabled: true
+    swagger-ui:      enabled: true#springdoc:   
+#  api-docs:#    path: /api-doc
+#  swagger-ui:
+#    display-request-duration: true
+#    display-query-params: true
+#    show-extensions: true
+#    persist-authorization: true#    operations-sorter: method

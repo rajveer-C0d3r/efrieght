@@ -1,0 +1,98 @@
+spring:
+  profiles:
+  - dev
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: notification-service
+  jmx:
+    default-domain: notification-service    
+  datasource :
+    url : jdbc:mysql://localhost:3306/eFrieghtCloud?autoReconnect=true
+    username : root
+    password : root
+    tomcat :
+      test-while-idle : true
+    driver-class-name : com.mysql.cj.jdbc.Driver
+    tomcat.max-active : 20
+  jpa :
+    #show-sql : true
+    hibernate :
+      ddl-auto : update
+      naming :
+        strategy : org.hibernate.cfg.ImprovedNamingStrategy
+    properties :
+      hibernate :
+        dialect : org.hibernate.dialect.MySQL5Dialect
+  mail:
+    host: srv4.sentrynet.in
+    port: 587
+    username: elog@grtship.com
+    password: 4uy66E3TX8
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          ssl:
+            trust: srv4.sentrynet.in
+    test-connection: false
+#  mail: # specific JHipster mail property, for standard properties see MailProperties
+    base-url-client: http://localhost:4200 # Modify according to your server's URL
+    base-url-admin: http://localhost:4200/auth # Modify according to your server's URL
+    from: elog@grtship.com  
+  thymeleaf:
+    cache: true       
+eureka:
+  instance:
+    prefer-ip-address: true   
+    hostname: localhost:8087
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    registryFetchIntervalSeconds: 5    
+    serviceUrl:
+      defaultZone: http://localhost:8061/eureka/        
+#  cloud:
+#    config:
+#      uri: http://localhost:8088
+
+logging:
+  level:
+    root: info
+    '[org.springframework.**]': DEBUG
+    '[com.grtship.**]': DEBUG 
+  pattern: 
+     console: '%d{yyyy-MMM-dd HH:mm:ss.SSS} [%thread]  %highlight(%-5level) [%12.12thread] %cyan(%-40.40logger{40}) : %msg %n'
+        
+management:
+  endpoints:
+    web:
+      cors:
+        allowed-origins:
+        - "*"
+        allowed-methods:
+        - GET
+        - POST
+        - PUT
+        - DELETE
+        allowed-headers:
+        - "*"   
+jwt:
+  accesstoken:
+    publicKey : MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuNvHsiOIGmTsJVyPbR/fym6XwHBuQxNYuU6zLF+hnoGbf45aFS6vaGIPmZ85SO08VrojXWpcga9YdPa3EAdFnUEFOi7LPJnyHslmwJt40WiVhFU57ju9AeTVlNAWoyYw9sACCQmyex6NC67TteTWm0yQLWz+6gegB8LDOpCD/lKe3pH8FIPbftdG0cKmWbQbcYhdDlhTB8mrUlrJgW2PCfW2LS1hyA3HtBUO1+qekDNtUQ/D4wqFQ4E1m/YjTKBVWPQDalZyMHF55m2HA9VPh/jEWKFYHMXGZgDUhvP/zmb9MaT1nfQsfRKUv5TOBwcooh3HLm3CWwT+ahWTR6eQbQIDAQAB
+    expiryTime : 60000
+    
+  refreshtoken:
+    publicKey : MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuNvHsiOIGmTsJVyPbR/fym6XwHBuQxNYuU6zLF+hnoGbf45aFS6vaGIPmZ85SO08VrojXWpcga9YdPa3EAdFnUEFOi7LPJnyHslmwJt40WiVhFU57ju9AeTVlNAWoyYw9sACCQmyex6NC67TteTWm0yQLWz+6gegB8LDOpCD/lKe3pH8FIPbftdG0cKmWbQbcYhdDlhTB8mrUlrJgW2PCfW2LS1hyA3HtBUO1+qekDNtUQ/D4wqFQ4E1m/YjTKBVWPQDalZyMHF55m2HA9VPh/jEWKFYHMXGZgDUhvP/zmb9MaT1nfQsfRKUv5TOBwcooh3HLm3CWwT+ahWTR6eQbQIDAQAB
+    expiryTime : 60000
+    
+file:
+   upload-dir: D:\\Data_backup\\Official_data\\Desktop\\eFrieght
+   
+   
+object-code:
+      default-block-size: 100       
+api-base-url: http://prod.grtship.com        

@@ -1,0 +1,127 @@
+spring:
+  servlet:
+     multipart:
+       max-file-size: 15MB
+  profiles:
+    active: uat   
+server:
+  port: 8081
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css, application/javascript, application/json
+    min-response-size: 1024  
+  servlet:
+    context-path: /account
+    
+    
+# KAFKA-CONFIGURATION
+kafka: # to configure kafka just un-comment this property
+  bootstrap :
+    servers: localhost:9092
+  consumer:
+    group_id: account-service
+    offset :
+      reset_config : latest
+    enable : 
+      auto_commit : true
+    key : 
+      deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    value : 
+      deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    auto : 
+      commit : 
+        interval_ms : 10000 
+        
+  producer:
+    key :
+      serializer: org.apache.kafka.common.serialization.StringSerializer
+    value: 
+      serializer: org.apache.kafka.common.serialization.StringSerializer
+    lingerms: 2
+    retries : 2
+    acks: 1 
+    compression_type: lz4
+    request_timeout_ms: 59000
+
+# application property
+chartofaccounts:
+  - name: Fixed Asset
+    code: F001
+    natureOfGroup: ASSETS
+  - name: Investment
+    code: I001
+    natureOfGroup: ASSETS
+  - name: Current Asset
+    code: C001
+    natureOfGroup: ASSETS
+  - name: Loans & Advances
+    code: L001
+    natureOfGroup: ASSETS
+  - name: Mics Expanditure not Written Off
+    code: M001
+    natureOfGroup: ASSETS
+  - name: P&L Debit Balance
+    code: P001
+    natureOfGroup: ASSETS
+  - name: Suspense Account (A)
+    code: S001
+    natureOfGroup: ASSETS
+  - name: Share Capital
+    code: S001
+    natureOfGroup: LIABILITIES
+  - name: Reserves and Surplus
+    code: R001
+    natureOfGroup: LIABILITIES
+  - name: Secured Loans
+    code: S001
+    natureOfGroup: LIABILITIES
+  - name: Unsecured Loans
+    code: U001
+    natureOfGroup: LIABILITIES
+  - name: Current Liabilities
+    code: C001
+    natureOfGroup: LIABILITIES
+  - name: Provisions
+    code: P001
+    natureOfGroup: LIABILITIES
+  - name: Suspense Account (L)
+    code: S001
+    natureOfGroup: LIABILITIES
+  - name: Direct Income
+    code: D001
+    natureOfGroup: INCOME
+  - name: Indirect Income
+    code: I001
+    natureOfGroup: INCOME
+  - name: Direct Expense
+    code: D002
+    natureOfGroup: EXPENSE
+  - name: Indirect Expense
+    code: I002
+    natureOfGroup: EXPENSE
+    
+swagger:
+  title: account-service
+  description: This service provide all account related data
+  version : 1.1.0
+  termsOfServiceUrl: will be provided soon
+  contactName: GRT Global Logistics Pvt Ltd
+  license: self-signed
+  licenseUrl: Inprogress
+  api:
+    name: JWT
+    keyname: Authorization
+    passAs: header
+  authorizationScope:
+    scope: global
+    description: accessEverything
+    
+    
+springfox:
+  documentation:
+    auto-startup: true
+    enabled: true
+    swagger-ui:
+      enabled: true       
+    
+      

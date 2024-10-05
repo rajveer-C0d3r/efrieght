@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.4.3</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.grtship</groupId>
+	<artifactId>common-service</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>common-service</name>
+	<description>common service for project</description>
+	<properties>
+		<mapstruct.version>1.3.1.Final</mapstruct.version>
+		<gson.version>2.8.5</gson.version>
+		<java.version>1.8</java.version>
+		<spring-kafka.version>2.3.8.RELEASE</spring-kafka.version>
+		<json.version>20200518</json.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<spring-cloud.version>2020.0.1</spring-cloud.version>
+	</properties>
+	<dependencies>
+		<!-- core dependency -->
+		<dependency>
+			<groupId>com.grtship</groupId>
+			<artifactId>core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<!-- apache KAFKA dependency -->
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+			<version>${spring-kafka.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>1.18.18</version>
+		    <scope>provided</scope>
+		</dependency>
+				
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+<!-- 		<dependency> -->
+<!-- 		    <groupId>org.hibernate</groupId> -->
+<!-- 		    <artifactId>hibernate-core</artifactId> -->
+<!-- 		    <version>5.4.28.Final</version> -->
+<!-- 		</dependency> -->
+				
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+<!-- 		<dependency> -->
+<!-- 		    <groupId>org.springframework.security</groupId> -->
+<!-- 		    <artifactId>spring-security-web</artifactId> -->
+<!-- 		    <version>5.4.5</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 		    <groupId>org.springframework</groupId> -->
+<!-- 		    <artifactId>spring-webmvc</artifactId> -->
+<!-- 		    <version>3.1.1.RELEASE</version> -->
+<!-- 		</dependency>	 -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
+<!-- 	    <dependency> -->
+<!-- 		    <groupId>org.springframework</groupId> -->
+<!-- 		    <artifactId>spring-web</artifactId> -->
+<!-- 		    <version>5.3.4</version> -->
+<!-- 		</dependency>  -->
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>javax.servlet-api</artifactId>
+<!-- 		    <scope>provided</scope> -->
+		</dependency>
+		<!-- spring-context dependency -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<!-- slf4j-log dependency -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<!-- JSON dependency -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>${json.version}</version>
+		</dependency>
+		<!-- spring data jpa dependency -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.data</groupId> -->
+<!-- 			<artifactId>spring-data-jpa</artifactId> -->
+<!-- 			<version>2.2.7.RELEASE</version> -->
+<!-- 		</dependency> -->
+		<!-- apache common lang dependency -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.11</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>javax.annotation-api</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-loadbalancer</artifactId>
+		</dependency>
+	</dependencies>
+   <dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+<!-- 	<build> -->
+<!-- 		<plugins> -->
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.springframework.boot</groupId> -->
+<!-- 				<artifactId>spring-boot-maven-plugin</artifactId> -->
+<!-- 			</plugin> -->
+<!-- 		</plugins> -->
+<!-- 	</build> -->
+
+</project>

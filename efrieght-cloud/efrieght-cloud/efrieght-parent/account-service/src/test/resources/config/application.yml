@@ -1,0 +1,76 @@
+eureka:
+  client:
+    enabled: false 
+  instance:
+    appname: account-service
+    prefer-ip-address: true
+    hostname: localhost:8081
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: account-service
+  datasource :
+    url : jdbc:mysql://localhost:3306/eFrieghtCloud?autoReconnect=true
+    username : root
+    password : root
+    tomcat :
+      test-while-idle : true
+    driver-class-name : com.mysql.cj.jdbc.Driver
+    tomcat.max-active : 20
+  jpa :
+    show-sql : true
+    hibernate :
+      ddl-auto : update
+      naming :
+        strategy : org.hibernate.cfg.ImprovedNamingStrategy
+    properties :
+      hibernate :
+        dialect : org.hibernate.dialect.MySQL5Dialect
+
+server:
+  port: 8081
+  address: localhost
+
+kafka: # to configure kafka just un-comment this property
+  bootstrap :
+    servers: localhost:9092
+  consumer:
+    group_id: account-service
+    offset :
+      reset_config : latest
+    enable : 
+      auto_commit : true
+    key : 
+      deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    value : 
+      deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    auto : 
+      commit : 
+        interval_ms : 10000 
+        
+  producer:
+    key :
+      serializer: org.apache.kafka.common.serialization.StringSerializer
+    value: 
+      serializer: org.apache.kafka.common.serialization.StringSerializer
+    lingerms: 2
+    retries : 2
+    acks: 1 
+    compression_type: lz4
+    request_timeout_ms: 59000
+jwt:
+  accesstoken:
+    publicKey : MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuNvHsiOIGmTsJVyPbR/fym6XwHBuQxNYuU6zLF+hnoGbf45aFS6vaGIPmZ85SO08VrojXWpcga9YdPa3EAdFnUEFOi7LPJnyHslmwJt40WiVhFU57ju9AeTVlNAWoyYw9sACCQmyex6NC67TteTWm0yQLWz+6gegB8LDOpCD/lKe3pH8FIPbftdG0cKmWbQbcYhdDlhTB8mrUlrJgW2PCfW2LS1hyA3HtBUO1+qekDNtUQ/D4wqFQ4E1m/YjTKBVWPQDalZyMHF55m2HA9VPh/jEWKFYHMXGZgDUhvP/zmb9MaT1nfQsfRKUv5TOBwcooh3HLm3CWwT+ahWTR6eQbQIDAQAB
+    expiryTime : 60000
+    
+  refreshtoken:
+    publicKey : MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuNvHsiOIGmTsJVyPbR/fym6XwHBuQxNYuU6zLF+hnoGbf45aFS6vaGIPmZ85SO08VrojXWpcga9YdPa3EAdFnUEFOi7LPJnyHslmwJt40WiVhFU57ju9AeTVlNAWoyYw9sACCQmyex6NC67TteTWm0yQLWz+6gegB8LDOpCD/lKe3pH8FIPbftdG0cKmWbQbcYhdDlhTB8mrUlrJgW2PCfW2LS1hyA3HtBUO1+qekDNtUQ/D4wqFQ4E1m/YjTKBVWPQDalZyMHF55m2HA9VPh/jEWKFYHMXGZgDUhvP/zmb9MaT1nfQsfRKUv5TOBwcooh3HLm3CWwT+ahWTR6eQbQIDAQAB
+    expiryTime : 60000
+file:
+   upload-dir: D:\\Data_backup\\Official_data\\Desktop\\eFrieght
+object-code:
+      default-block-size: 100       
+api-base-url: http://elogclient.brickcube.com

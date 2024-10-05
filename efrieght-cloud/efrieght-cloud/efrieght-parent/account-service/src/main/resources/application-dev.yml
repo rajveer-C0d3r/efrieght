@@ -1,0 +1,70 @@
+spring:
+  profiles:
+  - dev
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: account-service
+  jmx:
+    default-domain: account-service
+    enabled: true
+  datasource :
+    url : jdbc:mysql://localhost:3306/eFrieghtCloud?autoReconnect=true
+    username : root
+    password : pass@123
+    tomcat :
+      test-while-idle : true
+    driver-class-name : com.mysql.cj.jdbc.Driver
+    tomcat.max-active : 20
+  jpa :
+    #show-sql : true
+    hibernate :
+      ddl-auto : update
+      naming :
+        strategy : org.hibernate.cfg.ImprovedNamingStrategy
+    properties :
+      hibernate :
+        dialect : org.hibernate.dialect.MySQL5Dialect
+eureka:
+  instance:
+    appname: account-service
+    prefer-ip-address: true
+    hostname: localhost:8081
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
+#    status-page-url-path: ${management.endpoints.web.base-path}/info
+#    health-check-url-path: ${management.endpoints.web.base-path}/health
+  client:
+    healthcheck:
+      enabled: true
+    registerWithEureka: true
+    fetchRegistry: true
+    instance-info-replication-interval-seconds: 10
+    registry-fetch-interval-seconds: 10
+    serviceUrl:
+      defaultZone: http://localhost:8061/eureka/      
+logging:
+  level:
+    '[org.springframework]': DEBUG
+    '[com.grtship]': DEBUG 
+    '[org.apache.http.impl.conn.LoggingManagedHttpClientConnection]': off
+    '[org.springframework.web.client]': off
+    '[org.springframework.jdbc.datasource.DataSourceUtils]': off
+#  file: D:\Data_backup\Official_data\Desktop\logs\${spring.application.name}.log  
+  pattern: 
+#    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+     console: '%d{yyyy-MMM-dd HH:mm:ss.SSS} [%thread]  %highlight(%-5level) [%12.12thread] %cyan(%-40.40logger{40}) : %msg %n'
+#    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+jwt:
+  accesstoken:
+    publicKey : MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuNvHsiOIGmTsJVyPbR/fym6XwHBuQxNYuU6zLF+hnoGbf45aFS6vaGIPmZ85SO08VrojXWpcga9YdPa3EAdFnUEFOi7LPJnyHslmwJt40WiVhFU57ju9AeTVlNAWoyYw9sACCQmyex6NC67TteTWm0yQLWz+6gegB8LDOpCD/lKe3pH8FIPbftdG0cKmWbQbcYhdDlhTB8mrUlrJgW2PCfW2LS1hyA3HtBUO1+qekDNtUQ/D4wqFQ4E1m/YjTKBVWPQDalZyMHF55m2HA9VPh/jEWKFYHMXGZgDUhvP/zmb9MaT1nfQsfRKUv5TOBwcooh3HLm3CWwT+ahWTR6eQbQIDAQAB
+    expiryTime : 60000
+    
+  refreshtoken:
+    publicKey : MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuNvHsiOIGmTsJVyPbR/fym6XwHBuQxNYuU6zLF+hnoGbf45aFS6vaGIPmZ85SO08VrojXWpcga9YdPa3EAdFnUEFOi7LPJnyHslmwJt40WiVhFU57ju9AeTVlNAWoyYw9sACCQmyex6NC67TteTWm0yQLWz+6gegB8LDOpCD/lKe3pH8FIPbftdG0cKmWbQbcYhdDlhTB8mrUlrJgW2PCfW2LS1hyA3HtBUO1+qekDNtUQ/D4wqFQ4E1m/YjTKBVWPQDalZyMHF55m2HA9VPh/jEWKFYHMXGZgDUhvP/zmb9MaT1nfQsfRKUv5TOBwcooh3HLm3CWwT+ahWTR6eQbQIDAQAB
+    expiryTime : 60000
+file:
+   upload-dir: D:\\Data_backup\\Official_data\\Desktop\\eFrieght
+object-code:
+      default-block-size: 100       
+api-base-url: http://elogclient.brickcube.com
